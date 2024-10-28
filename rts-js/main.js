@@ -628,7 +628,7 @@ function createAccount(inputEmail, inputPassword, inputDob) {
       dataType: "json",
       contentType: "application/json",
       data: JSON.stringify({
-        email: inputEmail,
+        username: inputEmail,
         password: inputPassword,
         dob: inputDob,
       }),
@@ -970,6 +970,7 @@ $("#btnCreateAccount").click(function () {
       alert("We have sent you an email with a link to activate your account");
     },
     (data) => {
+      console.log(data.responseJSON);
       const response = data.responseJSON.message;
 
       if (response !== undefined) {
