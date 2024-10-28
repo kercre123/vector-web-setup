@@ -1,7 +1,7 @@
 {
   "stacks": {
     "prod": {
-      "accountEndpoints": "https://accounts.api.anki.com",
+      "accountEndpoints": "https://vicapi.pvic.xyz",
       "apiKeys": "luyain9ep5phahP8aph8xa"
     }
   }

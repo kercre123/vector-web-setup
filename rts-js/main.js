@@ -572,14 +572,16 @@ function doCloudLogin(inputUsername, inputPassword) {
   let p = new Promise(function (resolve, reject) {
     $.ajax({
       type: "POST",
-      url: _stack.getAccountEndpoints() + "/1/sessions",
+      url: _stack.getAccountEndpoints() + "/v1/sessions",
       headers: {
         "Anki-App-Key": _stack.getApiKeys(),
       },
-      data: {
+      dataType: "json",
+      contentType: "application/json",
+      data: JSON.stringify({
         username: inputUsername,
         password: inputPassword,
-      },
+      }),
     })
       .done(function (data) {
         resolve(data);
@@ -619,7 +621,7 @@ function createAccount(inputEmail, inputPassword, inputDob) {
   let p = new Promise(function (resolve, reject) {
     $.ajax({
       type: "POST",
-      url: _stack.getAccountEndpoints() + "/1/users",
+      url: _stack.getAccountEndpoints() + "/v1/create_user",
       headers: {
         "Anki-App-Key": _stack.getApiKeys(),
       },
@@ -629,9 +631,6 @@ function createAccount(inputEmail, inputPassword, inputDob) {
         email: inputEmail,
         password: inputPassword,
         dob: inputDob,
-        created_by_app_name: "vector-web-setup",
-        created_by_app_platform: "web",
-        created_by_app_version: "1.0.0",
       }),
     })
       .done(function (data) {
