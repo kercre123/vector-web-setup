@@ -967,7 +967,7 @@ $("#btnCreateAccount").click(function () {
       $("#txtNewAccountPw").val("");
       $("#txtNewAccountDob").val("");
 
-      alert("We have sent you an email with a link to activate your account");
+      alert("Your account has been created.");
     },
     (data) => {
       console.log(data.responseJSON);
