@@ -732,8 +732,14 @@ function HandleHandshake(version) {
       rtsHandler = new RtsV2Handler(vecBle, _sodium, _sessions);
       break;
     default:
-      // Unknown
-      break;
+      // Unknown (e.g. RTSv7 on current DDL firmware). Without a handler the
+      // calls below throw and the PIN never shows, so tell the user instead.
+      alert(
+        "This robot uses an unsupported firmware (RTS v" +
+          version +
+          "). Put Vector into recovery mode first (see the wire-pod wiki), then try again."
+      );
+      return;
   }
 
   _version = version;
